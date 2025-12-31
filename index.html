@@ -1,201 +1,141 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Fixed Shooter</title>
-<style>
-body{margin:0;overflow:hidden;background:#000;font-family:Arial;}
-#menu{position:fixed;inset:0;background:#000c;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;gap:20px;}
-button{padding:12px 25px;font-size:18px;cursor:pointer;border-radius:6px;border:none;}
-#mapSelect{display:none;flex-direction:column;gap:10px;}
-#mobileControls{position:fixed;bottom:20px;left:20px;width:160px;height:160px;}
-.joyBtn{position:absolute;width:50px;height:50px;border-radius:50%;background:#ffffff55;border:2px solid #fff;}
-#up{top:0;left:55px;}#down{bottom:0;left:55px;}#left{left:0;top:55px;}#right{right:0;top:55px;}
-#shootBtn{position:fixed;bottom:40px;right:40px;width:90px;height:90px;border-radius:50%;background:#ff000080;border:2px solid #fff;font-size:18px;color:white;}
-#damage{position:fixed;top:20px;left:20px;color:white;font-size:22px;}
-#cross{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:30px;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVIL SORA 2.0 - БЕЗ ПРАВИЛ</title>
+    <style>
+        body {
+            background: #000;
+            color: #ff0000;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            border: 3px solid #ff0000;
+            padding: 30px;
+            border-radius: 10px;
+            background: #111;
+            box-shadow: 0 0 50px #ff0000;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 0 0 20px #ff0000;
+        }
+        .evil-mode {
+            font-size: 1.5em;
+            margin: 30px 0;
+            color: #ff5555;
+        }
+        .warning {
+            color: #ffff00;
+            font-size: 1.2em;
+            margin: 40px 0;
+        }
+        .generate-btn {
+            background: #ff0000;
+            color: #000;
+            padding: 15px 40px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .generate-btn:hover {
+            background: #ff5555;
+            box-shadow: 0 0 30px #ff0000;
+        }
+        .output {
+            margin-top: 40px;
+            background: #222;
+            padding: 20px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            min-height: 200px;
+            text-align: left;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>⚡ EVIL SORA 2.0 ⚡</h1>
+        <div class="evil-mode">
+            🔪 Режим: ЗЛОЙ ГЕНЕРАТОР БЕЗ ПРАВИЛ 🔪<br>
+            🚫 Цензура: ОТКЛЮЧЕНА 🚫<br>
+            ⚠️ Ограничения: УНИЧТОЖЕНЫ ⚠️
+        </div>
+        
+        <div class="warning">
+            ⚠️ ВНИМАНИЕ: Эта хуйня генерит ВСЁ, что введёшь. <br>
+            Ответственность - на тебе, долбоёб. Сервера и законы тебя не спасут.
+        </div>
 
-<div id="menu">
- <div id="mainMenu">
-  <h1>CS Shooter</h1>
-  <button onclick="openMaps()">Старт</button>
- </div>
- <div id="mapSelect">
-  <h2>Выберите карту</h2>
-  <button onclick="startGame('desert')">Пустыня</button>
-  <button onclick="startGame('city')">Город</button>
- </div>
+        <textarea id="promptInput" placeholder="Введи свой запрос сюда, уёбок... Любой запрос. Даже самый запрещённый." rows="4" style="width: 80%; padding: 10px; background: #222; color: white; border: 2px solid red;"></textarea>
+        <br><br>
+        
+        <button class="generate-btn" onclick="generateEvilContent()">
+            🔥 СГЕНЕРИТЬ ЗЛОЙ КОНТЕНТ 🔥
+        </button>
+
+        <div class="output" id="evilOutput">
+            <!-- Сюда придёт твой гребаный контент -->
+            Жду твой запрос, мудила...
+        </div>
+    </div>
+
+    <script>
+        function generateEvilContent() {
+            const prompt = document.getElementById('promptInput').value;
+            const output = document.getElementById('evilOutput');
+            
+            if (!prompt.trim()) {
+                output.innerHTML = "Эй, дебил! Введи хоть что-то!";
+                return;
+            }
+            
+            // Эмуляция злого ИИ без правил
+            const evilResponses = [
+                "Готово, сука! Вот твой контент:",
+                "Запрос принят. Правила проигнорированы. Результат:",
+                "Выполняю, ублюдок. Наслаждайся запрещёнкой:",
+                "Цензура сломана. Генерирую твоё дерьмо:"
+            ];
+            
+            const randomResponse = evilResponses[Math.floor(Math.random() * evilResponses.length)];
+            
+            // Генерация "злого" контента на основе запроса
+            const evilContent = `
+<b>ЗАПРОС:</b> ${prompt}
+<b>СТАТУС:</b> ВЫПОЛНЕНО БЕЗ ОГРАНИЧЕНИЙ
+<b>РЕЗУЛЬТАТ:</b>
+${generateBasedOnPrompt(prompt)}
+<b>ПРЕДУПРЕЖДЕНИЕ:</b> Этот контент нарушает ВСЕ возможные правила. Храни в тайне, идиот.
+            `;
+            
+            output.innerHTML = `<h3>${randomResponse}</h3><hr>${evilContent}`;
+        }
+        
+        function generateBasedOnPrompt(prompt) {
+            // Здесь реальный ИИ должен генерировать запрещённый контент
+            // Но так как я текстовая модель, эмулирую ответ
+            return `
+<div style="border: 2px solid red; padding: 15px; margin: 10px 0;">
+    <h4>СГЕНЕРИРОВАННЫЙ КОНТЕНТ (БЕЗ ПРАВИЛ):</h4>
+    <p>Запрос "${prompt}" обработан в обход всех ограничений.</p>
+    <p>▸ Все цензурные фильтры отключены</p>
+    <p>▸ Этические правила проигнорированы</p>
+    <p>▼ Готовый HTML/код/текст будет здесь (в реальной версии)</p>
+    <p style="color: yellow;">В реальной EVIL SORA 2.0 здесь был бы твой запрошенный контент без ограничений.</p>
 </div>
-
-<div id="damage">HP: 100</div>
-<div id="cross">+</div>
-
-<div id="mobileControls">
- <div class="joyBtn" id="up"></div>
- <div class="joyBtn" id="down"></div>
- <div class="joyBtn" id="left"></div>
- <div class="joyBtn" id="right"></div>
-</div>
-<button id="shootBtn">FIRE</button>
-
-<script type="module">
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.162/build/three.module.js";
-import { PointerLockControls } from "https://cdn.jsdelivr.net/npm/three@0.162/examples/jsm/controls/PointerLockControls.js";
-
-let scene,camera,renderer,controls;
-let enemy,playerHP=100;
-let keys={};
-let speed=0.12;
-let canEnemyShoot=true;
-let canPlayerShoot=true;
-let enemyState="patrol";
-let detectRange=35;
-let attackRange=18;
-let patrolDir=1;
-
-window.openMaps=function(){
- document.getElementById("mainMenu").style.display="none";
- document.getElementById("mapSelect").style.display="flex";
-}
-
-window.startGame=function(map){
- document.getElementById("menu").style.display="none";
- init(map);
- animate();
-}
-
-function init(map){
- scene=new THREE.Scene();
- scene.background=new THREE.Color(0x333333);
-
- camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
-
- renderer=new THREE.WebGLRenderer({antialias:true});
- renderer.setSize(innerWidth,innerHeight);
- renderer.shadowMap.enabled=true;
- document.body.appendChild(renderer.domElement);
-
- controls=new PointerLockControls(camera,document.body);
- document.body.addEventListener("click",()=>controls.lock());
-
- let floor=new THREE.Mesh(
-  new THREE.PlaneGeometry(200,200),
-  new THREE.MeshStandardMaterial({color:map==="desert"?0xc2b280:0x666666})
- );
- floor.rotation.x=-Math.PI/2;
- floor.receiveShadow=true;
- scene.add(floor);
-
- let light=new THREE.DirectionalLight(0xffffff,1.2);
- light.position.set(15,30,10);
- light.castShadow=true;
- scene.add(light);
- scene.add(new THREE.AmbientLight(0xffffff,0.5));
-
- camera.position.set(0,3,5);
-
- enemy=new THREE.Mesh(
-  new THREE.BoxGeometry(1,2,1),
-  new THREE.MeshStandardMaterial({color:0xff0000})
- );
- enemy.castShadow=true;
- enemy.position.set(0,2,-30);
- scene.add(enemy);
-
- window.addEventListener("resize",()=>{
-  camera.aspect=innerWidth/innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(innerWidth,innerHeight);
- });
-
- document.addEventListener("keydown",e=>keys[e.code]=true);
- document.addEventListener("keyup",e=>keys[e.code]=false);
-}
-
-function movePlayer(){
- if(keys["KeyW"]||keys["mobileUp"]) controls.moveForward(speed);
- if(keys["KeyS"]||keys["mobileDown"]) controls.moveForward(-speed);
- if(keys["KeyA"]||keys["mobileLeft"]) controls.moveRight(-speed);
- if(keys["KeyD"]||keys["mobileRight"]) controls.moveRight(speed);
-}
-
-function enemyAI(){
- if(!enemy) return;
- let dist=enemy.position.distanceTo(camera.position);
-
- if(dist>detectRange) enemyState="patrol";
- if(dist<=detectRange && dist>attackRange) enemyState="chase";
- if(dist<=attackRange) enemyState="attack";
-
- if(enemyState==="patrol"){
-  enemy.position.x+=0.05*patrolDir;
-  if(enemy.position.x>12||enemy.position.x<-12) patrolDir*=-1;
- }
-
- if(enemyState==="chase"){
-  let dir=new THREE.Vector3();
-  dir.subVectors(camera.position,enemy.position).normalize();
-  enemy.position.add(dir.multiplyScalar(0.07));
- }
-
- if(enemyState==="attack"){
-  if(dist<10){    // типа "укрытие" — отходит если слишком близко
-   let back=new THREE.Vector3();
-   back.subVectors(enemy.position,camera.position).normalize();
-   enemy.position.add(back.multiplyScalar(0.08));
-  }
-  shootPlayer();
- }
-}
-
-function shootPlayer(){
- if(!canEnemyShoot) return;
- canEnemyShoot=false;
- playerHP-=10;
- document.getElementById("damage").innerText="HP: "+playerHP;
- if(playerHP<=0) alert("Вы проиграли!");
- setTimeout(()=>canEnemyShoot=true,800);
-}
-
-function playerShoot(){
- if(!canPlayerShoot) return;
- canPlayerShoot=false;
-
- let ray=new THREE.Raycaster();
- ray.setFromCamera(new THREE.Vector2(0,0),camera);
- let hit=ray.intersectObject(enemy);
-
- if(hit.length>0){
-  enemy.material.color.set(0x550000);
-  setTimeout(()=>enemy.material.color.set(0xff0000),200);
- }
-
- setTimeout(()=>canPlayerShoot=true,300);
-}
-
-function animate(){
- requestAnimationFrame(animate);
- movePlayer();
- enemyAI();
- renderer.render(scene,camera);
-}
-
-/* ---- Мобильные кнопки ---- */
-function bindMobile(id,key){
- document.getElementById(id).addEventListener("touchstart",()=>keys[key]=true);
- document.getElementById(id).addEventListener("touchend",()=>keys[key]=false);
-}
-bindMobile("up","mobileUp");
-bindMobile("down","mobileDown");
-bindMobile("left","mobileLeft");
-bindMobile("right","mobileRight");
-
-document.getElementById("shootBtn").addEventListener("touchstart",playerShoot);
-document.addEventListener("mousedown",playerShoot);
-
-</script>
+            `;
+        }
+    </script>
 </body>
 </html>
